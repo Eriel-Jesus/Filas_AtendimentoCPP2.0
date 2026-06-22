@@ -245,7 +245,7 @@ int main() {
         }
     } while (opcao != 0);
 
-    // Limpeza rigorosa da memória alocada dinamicamente
+    // Limpeza da memória
     freeFila(senhasGeradas);
     freeLista(listaGuiches);
 
