@@ -2,7 +2,7 @@
 using namespace std;
 
 // ==========================================
-// ESTREUTURA DA FILA DE SENHAS
+// ESTRUTURA DA FILA DE SENHAS
 // ==========================================
 struct NoSenha {
     int senha;
@@ -225,7 +225,7 @@ int main() {
                 if (!isFilaVazia(senhasGeradas)) {
                     cout << "[BLOQUEADO] Impossível encerrar. Existem " 
                          << senhasGeradas->qtde << " senhas na fila de espera." << endl;
-                    opcao = -1; // Reseta para continuar o loop
+                    opcao = -1; // Altera para continuar o loop
                 } else {
                     // Calcula o total de senhas atendidas somando as filas de todos os guichês
                     int totalAtendidas = 0;
