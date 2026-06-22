@@ -2,7 +2,7 @@
 using namespace std;
 
 // ==========================================
-// ESTRUTURA DA FILA DE SENHAS
+// ESTREUTURA DA FILA DE SENHAS
 // ==========================================
 struct NoSenha {
     int senha;
@@ -150,6 +150,7 @@ int main() {
     int controleSenha = 1;
 
     do {
+        system("cls");
         cout << "\n========================================" << endl;
         cout << "        SISTEMA DE ATENDIMENTO 2.0" << endl;
         cout << "   Senhas aguardando: " << senhasGeradas->qtde << endl;
@@ -169,6 +170,8 @@ int main() {
                 enqueue(senhasGeradas, controleSenha);
                 cout << "[SUCESSO] Senha " << controleSenha << " gerada." << endl;
                 controleSenha++;
+                cin.get();
+                cin.ignore();
                 break;
 
             case 2: // Abrir Guichê
@@ -180,6 +183,8 @@ int main() {
                 } else {
                     cout << "[ERRO] Já existe um guiche aberto com o ID " << idNovoGuiche << "." << endl;
                 }
+                cin.get();
+                cin.ignore();
                 break;
 
             case 3: // Realizar Atendimento
@@ -201,6 +206,8 @@ int main() {
                         cout << "[ATENDIMENTO] Guiche " << g->id << " chamando a senha: " << senhaChamada << endl;
                     }
                 }
+                cin.get();
+                cin.ignore();
                 break;
 
             case 4: // Listar Senhas Atendidas por Guichê
@@ -219,13 +226,15 @@ int main() {
                         printFila(g->senhasAtendidas);
                     }
                 }
+                cin.get();
+                cin.ignore();
                 break;
 
             case 0: // Sair
                 if (!isFilaVazia(senhasGeradas)) {
                     cout << "[BLOQUEADO] Impossível encerrar. Existem " 
                          << senhasGeradas->qtde << " senhas na fila de espera." << endl;
-                    opcao = -1; // Altera para continuar o loop
+                    opcao = -1; // Reseta para continuar o loop
                 } else {
                     // Calcula o total de senhas atendidas somando as filas de todos os guichês
                     int totalAtendidas = 0;
@@ -237,15 +246,19 @@ int main() {
                     cout << "[ENCERRANDO] Sistema de atendimento finalizado com sucesso." << endl;
                     cout << "Total consolidado de senhas atendidas: " << totalAtendidas << endl;
                 }
+                cin.get();
+                cin.ignore();
                 break;
 
             default:
                 cout << "[ERRO] Opção inválida!" << endl;
+                cin.get();
+                cin.ignore();
                 break;
         }
     } while (opcao != 0);
 
-    // Limpeza da memória
+    // Limpeza rigorosa da memória alocada dinamicamente
     freeFila(senhasGeradas);
     freeLista(listaGuiches);
 
